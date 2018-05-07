@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- MarkSegmentBean -->
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+    <subclass name="QRMarkSegmentPositionBean" extends="MarkSegmentPositionBean" discriminator-value="2">
+
+        <join table="p_mark_segment_qrcode_position">
+            <comment>二维码标记段坐标</comment>
+
+            <key column="id"/>
+
+            <component name="qrCodeA" class="com.microwise.proxima.bean.QRCodePosition">
+                <component name="point0">
+                    <property name="x" column="pointA_0_x"/>
+                    <property name="y" column="pointA_0_y"/>
+                </component>
+                <component name="point1">
+                    <property name="x" column="pointA_1_x"/>
+                    <property name="y" column="pointA_1_y"/>
+                </component>
+                <component name="point2">
+                    <property name="x" column="pointA_2_x"/>
+                    <property name="y" column="pointA_2_y"/>
+                </component>
+            </component>
+
+            <component name="qrCodeB" class="com.microwise.proxima.bean.QRCodePosition">
+                <component name="point0">
+                    <property name="x" column="pointB_0_x"/>
+                    <property name="y" column="pointB_0_y"/>
+                </component>
+                <component name="point1">
+                    <property name="x" column="pointB_1_x"/>
+                    <property name="y" column="pointB_1_y"/>
+                </component>
+                <component name="point2">
+                    <property name="x" column="pointB_2_x"/>
+                    <property name="y" column="pointB_2_y"/>
+                </component>
+            </component>
+        </join>
+    </subclass>
+
+</hibernate-mapping> 

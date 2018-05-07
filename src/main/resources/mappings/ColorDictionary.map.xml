@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+	<!-- ColorDictionaryBean -->
+	<class name="ColorDictionaryBean" table="p_color_dictionary">
+		<comment>色轮表</comment>
+
+		<id name="id">
+			<generator class="identity" />
+		</id>
+		<property name="colorIndex" />
+		<property name="colorRGB" column="colorRgb" />
+		<property name="colorType" />
+	</class>
+</hibernate-mapping>

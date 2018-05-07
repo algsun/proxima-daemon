@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- PictureBean -->
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<class name="PictureBean" table="p_pictures">
+        <comment>图片表</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+		<property name="name" column="pictureName" />
+		<property name="path" column="picturePath" />
+		<property name="saveTime" type="timestamp" column="picCreateTime" />
+        <property name="analyzable" type="org.hibernate.type.NumericBooleanType" column="isAnalyzable"/>
+
+		<many-to-one name="dv" column="dvPlaceId"/>
+	</class>
+
+</hibernate-mapping> 

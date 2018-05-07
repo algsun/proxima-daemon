@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/galaxy</property>
+        <property name="connection.username">microwise</property>
+        <property name="connection.password">microwise</property>
+
+        <!--hibernate.c3p0 -->
+        <property name="connection.provider_class">
+            org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider
+        </property>
+        <property name="hibernate.c3p0.min_size">2</property>
+        <property name="hibernate.c3p0.max_size">5</property>
+        <property name="hibernate.c3p0.timeout">5000</property>
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">
+            org.springframework.orm.hibernate4.SpringSessionContext
+        </property>
+
+        <property name="cache.use_query_cache">false</property>
+        <property name="cache.use_second_level_cache">false</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+
+        <!-- create, create-drop, update, validate -->
+        <property name="hbm2ddl.auto">validate</property>
+
+        <mapping resource="mappings/Zone.map.xml"/>
+        <mapping resource="mappings/Site.map.xml"/>
+        <mapping resource="mappings/DVPlace.map.xml"/>
+        <mapping resource="mappings/DVPlaces.map.xml"/>
+        <mapping resource="mappings/FTPProfile.map.xml"/>
+        <mapping resource="mappings/Picture.map.xml"/>
+        <mapping resource="mappings/MarkSegment.map.xml"/>
+        <mapping resource="mappings/MarkSegmentPosition.map.xml"/>
+        <mapping resource="mappings/QRMarkSegment.map.xml"/>
+        <mapping resource="mappings/QRMarkSegmentPosition.map.xml"/>
+        <mapping resource="mappings/InfraredMarkRegion.map.xml"/>
+        <mapping resource="mappings/InfraredMarkRegionData.map.xml"/>
+        <mapping resource="mappings/InfraredPictureData.map.xml"/>
+        <mapping resource="mappings/PhotographSchedule.map.xml"/>
+        <mapping resource="mappings/ColorDictionary.map.xml"/>
+        <mapping resource="mappings/IdentityCode.map.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

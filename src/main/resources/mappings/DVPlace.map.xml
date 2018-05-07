@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<!-- DVPlaceBean -->
+	<class name="DVPlaceBean" table="p_dv_place">
+        <comment>摄像机点位</comment>
+
+		<id name="id" length="22">
+			<generator class="assigned" />
+		</id>
+
+		<discriminator column="dvType" type="string" length="1"></discriminator>
+
+		<property name="placeCode" column="placeCode" unique="true" />
+		<property name="placeName" />
+		<!--<property name="placeInfo" />-->
+		<property name="createTime" type="timestamp" />
+		<property name="imageRealWidth"/>
+		<property name="imageWidth"/>
+		<property name="imageHeight"/>
+		<property name="enable" type="org.hibernate.type.NumericBooleanType" />
+		<property name="remark" />
+
+		<property name="dvIp" />
+		<!--<property name="ftpHost" column="ftpServer" />-->
+		<!--<property name="ftpPort" />-->
+		<!--<property name="ftpUser" />-->
+		<!--<property name="ftpPassword" />-->
+        <many-to-one name="ftp" column="ftpProfileId"/>
+		
+        <many-to-one name="zone" column="zoneId"/>
+        <!--<many-to-one name="monitorPoint" column="monitorPointId" lazy="false" fetch="join" />-->
+	</class>
+
+</hibernate-mapping> 

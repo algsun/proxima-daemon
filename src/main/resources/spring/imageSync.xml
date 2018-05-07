@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 后台图片扫描任务 -->
+    <bean name="initJob" class="com.microwise.proxima.imagesync.InitJobBean" init-method="initScheduler"
+          lazy-init="false">
+        <constructor-arg index="0" ref="scheduler"/>
+        <constructor-arg index="1" ref="pictureScanTrigger"/>
+    </bean>
+
+    <bean name="pictureScanTrigger" class="com.microwise.proxima.imagesync.PictureScanTrigger" scope="prototype">
+        <constructor-arg index="0" ref="scheduler"/>
+        <!-- 配置扫描时间 单位：分钟 -->
+        <constructor-arg index="1" value="${image.scan.interval.minutes}"/>
+    </bean>
+
+    <bean name="pictureScan" class="com.microwise.proxima.imagesync.PictureScan" scope="prototype">
+        <property name="uploadToCloud" value="${proxima.images.isUploadToCloud}"/>
+        <property name="imageSyncListeners">
+            <list>
+                <bean class="com.microwise.proxima.imagesync.ext.SyncImageSizeListener" scope="prototype"/>
+                <bean class="com.microwise.proxima.imagesync.ext.OpticsQRCodeImageSyncListener" scope="prototype"/>
+                <bean class="com.microwise.proxima.imagesync.ext.InfraredAnalyzerListener" scope="prototype"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

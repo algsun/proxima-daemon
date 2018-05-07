@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.beans2">
+
+    <!-- DVPlaceBean -->
+    <class name="IdentityCode" table="p_identity_code">
+        <id name="id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="text"/>
+
+
+        <component name="firstPoint" class="com.microwise.proxima.bean.Point">
+            <property name="x" column="first_x"/>
+            <property name="y" column="first_y"/>
+        </component>
+
+        <component name="secondPoint" class="com.microwise.proxima.bean.Point">
+            <property name="x" column="second_x"/>
+            <property name="y" column="second_y"/>
+        </component>
+
+        <component name="thirdPoint" class="com.microwise.proxima.bean.Point">
+            <property name="x" column="third_x"/>
+            <property name="y" column="third_y"/>
+        </component>
+
+        <many-to-one name="picture" column="picture_id"/>
+    </class>
+
+</hibernate-mapping> 

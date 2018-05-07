@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+    <class name="FTPProfile" table="p_ftp_profile">
+        <comment>FTP 链接</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+        </id>
+
+        <property name="name" column="profile_name"/>
+        <property name="host"/>
+        <property name="port"/>
+        <property name="username"/>
+        <property name="password"/>
+
+        <many-to-one name="site" column="siteId"></many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<!-- OpticsDVPlaceBean -->
+	<subclass name="OpticsDVPlaceBean" extends="DVPlaceBean"
+		discriminator-value="1">
+
+		<join table="p_dv_place_optics">
+            <comment>光学摄像机点位</comment>
+
+			<key column="dvPlaceId"></key>
+
+			<property name="dvPort"/>
+			<property name="ioVersion"/>
+			<property name="ioIp"/>
+			<property name="ioPort"/>
+			<property name="lightOnTime"/>
+			<property name="lightOffTime"/>
+			<property name="photographTime"/>
+			<property name="ioLightRoute"/>
+			<property name="ioDvRoute"/>
+			<property name="ioOn" column="isIoOn" type="org.hibernate.type.NumericBooleanType"/>
+			<property name="lightOn" column="isLightOn" type="org.hibernate.type.NumericBooleanType"/>
+		</join>
+	</subclass>
+
+	<!-- InfraredDVPlaceBean -->
+	<subclass name="InfraredDVPlaceBean" extends="DVPlaceBean"
+		discriminator-value="2">
+    </subclass>
+
+</hibernate-mapping> 

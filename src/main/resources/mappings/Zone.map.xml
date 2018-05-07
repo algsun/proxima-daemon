@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+    <class name="Zone" table="t_zone">
+        <!-- 站点唯一标识   -->
+        <id name="id" length="36" column="zoneId">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="name" column="zoneName" length="50"/>
+        <property name="planImage" length="500"/>
+        <property name="dataVersion" />
+
+        <many-to-one name="parent" column="parentId"/>
+        <many-to-one name="site" column="siteId"/>
+    </class>
+
+</hibernate-mapping> 

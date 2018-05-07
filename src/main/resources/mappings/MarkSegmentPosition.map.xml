@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- MarkSegmentPositionBean -->
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<class name="MarkSegmentPositionBean" table="p_mark_segment_position" discriminator-value="1">
+        <comment>标记段坐标</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+
+        <discriminator column="markType" type="int"/>
+
+		<property name="positionX" />
+		<property name="positionY" />
+		<property name="positionX2" />
+		<property name="positionY2" />
+        <property name="picSaveTime" type="timestamp"/>
+		<property name="updateTime" type="timestamp" />
+		<property name="markLength" />
+		<property name="lengthDelta" />
+
+		<many-to-one name="markSegment" column="markId"></many-to-one>
+		<many-to-one name="picture" column="picId"></many-to-one>
+	</class>
+
+</hibernate-mapping> 

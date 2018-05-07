@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<class name="Site" table="t_site">
+		<id name="siteId" column="siteId" length="50">
+			<generator class="assigned" />
+		</id>
+
+		<property name="siteName" length="50" />
+
+        <property name="areaCode" column="areaCode"/>
+	</class>
+
+</hibernate-mapping> 

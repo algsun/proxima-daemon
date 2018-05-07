@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+	<!-- InfraredMarkDataRegionBean -->
+	<class name="InfraredMarkRegionDataBean" table="p_infrared_region_data">
+        <comment>红外图片标记区域值</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+		
+		<property name="highTemperature" not-null="true" />
+		<property name="lowTemperature" not-null="true" />
+		<property name="averageTemperature" />
+
+		<many-to-one name="picture" column="picId" />
+		<many-to-one name="markRegion" column="markRegionId"/>
+	</class>
+</hibernate-mapping>

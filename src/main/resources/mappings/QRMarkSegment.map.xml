@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- MarkSegmentBean -->
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+    <subclass name="QRMarkSegmentBean" extends="MarkSegmentBean" discriminator-value="2">
+
+        <join table="p_mark_segment_qrcode">
+            <comment>二维码标记段</comment>
+
+            <key column="id"/>
+
+            <property name="textA"/>
+            <property name="textB"/>
+        </join>
+    </subclass>
+
+</hibernate-mapping> 

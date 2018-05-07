@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+	<class name="PhotographScheduleBean" abstract="true">
+        <comment>摄像机拍照计划</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+
+		<property name="dayOfWeek" length="20">
+			<type name="com.microwise.proxima.bean.base.NumberEnumHibernateType">
+				<param name="enumClass">com.microwise.proxima.bean.DayType</param>
+				<!-- VARCHAR -->
+				<!--<param name="type">12</param>-->
+			</type>
+		</property>
+
+		<many-to-one name="dvPlace" column="dvPlaceId"></many-to-one>
+	</class>
+
+	<!-- PhotographPointScheduleBean -->
+	<union-subclass name="PhotographPointScheduleBean"
+		extends="PhotographScheduleBean" table="p_photograph_time_point">
+        <comment>时间点拍照计划</comment>
+
+		<property name="timePoint" type="time" />
+	</union-subclass>
+
+	<!-- PhotographIntervalScheduleBean -->
+	<union-subclass name="PhotographIntervalScheduleBean"
+		extends="PhotographScheduleBean" table="p_photograph_time_interval">
+        <comment>周期拍照计划</comment>
+
+		<property name="startTime" type="time" />
+		<property name="endTime" type="time" />
+		<property name="interval" column="intervalTime" />
+	</union-subclass>
+
+</hibernate-mapping> 

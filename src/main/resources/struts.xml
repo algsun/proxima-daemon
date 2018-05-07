@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <constant name="struts.freeroute.controllerSuffixes" value="Action, Controller"/>
+    <constant name="struts.freeroute.controllerPackage" value="com.microwise"/>
+    <constant name="struts.freeroute.defaultParentPackage" value="json-default"/>
+
+    <!-- TODO 添加注释 @gaohui 2013-03-29 -->
+    <package name="dvPlace" extends="struts-default,json-default" namespace="/dv-place">
+        <action name="refreshPhotographPlan" class="photographAction" method="refreshPhotographPlan">
+            <result type="json">
+                <param name="includeProperties">success,message</param>
+            </result>
+        </action>
+
+        <action name="enable" class="dvPlaceAction" method="enable">
+            <result type="json">
+                <param name="includeProperties">success</param>
+            </result>
+        </action>
+
+        <action name="added" class="dvPlaceAction" method="added">
+            <result type="json">
+                <param name="includeProperties">success</param>
+            </result>
+        </action>
+
+        <action name="ftpChanged" class="dvPlaceAction" method="ftpChanged">
+            <result type="json">
+                <param name="includeProperties">success</param>
+            </result>
+        </action>
+
+        <action name="ftpUpdated" class="ftpAction" method="update">
+            <result type="json">
+                <param name="includeProperties">success</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="index" extends="json-default">
+
+        <action name="" class="indexAction">
+            <result>/_index.jsp</result>
+        </action>
+
+        <action name="turnOn" class="controlAction" method="turnOn">
+            <result name="success" type="redirect">/</result>
+        </action>
+
+        <action name="turnOff" class="controlAction" method="turnOff">
+            <result name="success" type="redirect">/</result>
+        </action>
+
+    </package>
+
+</struts>

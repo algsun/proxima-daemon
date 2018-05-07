@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- MarkSegmentBean -->
+<hibernate-mapping package="com.microwise.proxima.bean">
+
+	<class name="MarkSegmentBean" table="p_mark_segment" discriminator-value="1">
+        <comment>标记段</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+
+        <discriminator column="markType" type="int"/>
+
+		<property name="name" column="markName" />
+		<property name="createTime" type="timestamp" column="createTime" />
+		<property name="cancelTime" type="timestamp" />
+		<property name="cancel" type="org.hibernate.type.NumericBooleanType" column="cancelState"/>
+
+		<many-to-one name="dvPlace" column="dvPlaceId"></many-to-one>
+		
+		<!-- name 和 dvPlaceId 唯一约束 -->
+		<properties name="unique_name" unique="true" insert="false" update="false">
+			<property name="name" column="markName" insert="false" update="false"/>
+			<many-to-one name="dvPlace" column="dvPlaceId" insert="false" update="false"></many-to-one>
+		</properties>
+	</class>
+
+</hibernate-mapping> 

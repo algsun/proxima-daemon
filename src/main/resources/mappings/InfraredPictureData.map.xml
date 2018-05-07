@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.microwise.proxima.bean">
+	<!-- InfraredPictureDataBean -->
+	<class name="InfraredPictureDataBean" table="p_infrared_picture_data">
+        <comment>红外图片值</comment>
+
+        <id name="id" length="22">
+            <generator class="assigned" />
+		</id>
+		<property name="highTemperature" not-null="true" />
+		<property name="lowTemperature" not-null="true" />
+		<property name="averageTemperature" />
+
+		<many-to-one name="picture" column="picId" unique="true" />
+	</class>
+</hibernate-mapping>
